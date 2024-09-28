@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+aws s3 mb s3://trevorbucket1
+
+BUCKET_NAME="trevorbucket1"  
+FILE_PATH="google_logo.png"      
+
+aws s3 cp google_logo.png s3://trevorbucket1/
+
+PRESIGNED_URL=$(aws s3 presign s3://trevorbucket1/google_logo.png --expires-in 604800)
+
+echo "Presigned URL: $PRESIGNED_URL"
